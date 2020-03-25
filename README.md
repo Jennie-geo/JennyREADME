@@ -1,2 +1,0 @@
-# JennyREADME
-My second repository

@@ -1,4 +1,5 @@
 const express = require("express");
+const calculator = require("./calculator");
 const app = express();
 const port = 3005;
 
@@ -11,7 +12,27 @@ app.get('/user', function(req, res) {
 });
 
 app.get('/calculator/add', (req, res)=>{
-    res.send("This is the calculator page");
+    const a = req.query.a;
+    const b = req.query.b;
+    const result = calculator.addNumbers(a, b);
+
+    res.send(`Adding ${a} + ${b} = ${result}`);
+});
+
+app.get('/calculator/minus', (req, res)=>{
+    const a = req.query.a;
+    const b = req.query.b;
+    const result = calculator.subtractNumbers(a, b);
+
+    res.send(`Subtract ${a} - ${b} = ${result}`);
+});
+
+app.get('/calculator/multiply', (req, res)=>{
+    const a = req.query.a;
+    const b = req.query.b;
+    const result = calculator.multiplyNumbers(a, b);
+
+    res.send(`Multiply ${a} * ${b} = ${result}`);
 });
 
 try {
